@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>chat bot</title>
+    <link rel="stylesheet" href="../static/css/demo.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="messages_container">
+        <div class="chat_header">
+          <div class="chat_user_status">
+            <img src="../static/img/rogo.png" alt="" />
+          </div>
+          <div class="botton_esc">
+            <a href="/chat">
+              <img src="../static/img/reload.png" alt="" />
+            </a>
+
+            <a href="#link">
+              <div class="botton_esc1">
+                <img src="../static/img/下ボタン.png" alt="" />
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="messages">
+          .
+          <!-- <div class="chat_message chat_left">
+                    <div class="message_box">
+                        <div class="message_content">
+                            <div class="message_text">
+                                このシステムはchat botです
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat_clear"></div>
+
+                <div class="chat_message chat_right">
+                    <div class="message_box">
+                        <div class="message_content">
+                            <div class="message_text">
+                                では、これを探して下しさい
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat_clear"></div> -->
+
+          {% if array %} {% for data in array %} {% for k in data %}
+
+          <div class="message_icon_right">
+            <div class="message_icon_right_img">
+              <img src="../static/img/43_20230822135528.png" alt="社長" />
+            </div>
+          </div>
+
+          <div class="chat_message chat_right">
+            <div class="message_box">
+              <div class="message_content">
+                <div class="message_text">
+                  {% for q in k%} {{q}}<br />
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat_clear"></div>
+
+          <div class="message_icon_left">
+            <div class="message_icon_left_img">
+              <img src="..\static\img\syatyou.png" alt="社長" />
+            </div>
+          </div>
+
+          <div class="chat_message chat_left">
+            <div class="message_box">
+              <div class="message_content">
+                <div class="message_text">
+                  {% for i in data[k]%} {{i}}<br />
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat_clear"></div>
+          {% endfor %} {% endfor %} {% endif %}
+          <div id="scroll"></div>
+
+          <div id="link"></div>
+
+          <div class="rich_menu">
+            <div class="botton_1">
+              <form action="" method="post" id="a">
+                <div class="option">
+                    <p>{{key}}</p>
+                  {% for i in data%}
+                  <input
+                    type="submit"
+                    value="{{i}}"
+                    name="select"
+                    class="kind_botton"
+                  />
+                  {% endfor %}
+                  <input type="hidden" name="buttonType" value="{{key}}" />
+                  <input type="hidden" name="choice" , value="{{choice}}" />
+                  <input
+                    type="hidden"
+                    name="attention"
+                    ,
+                    value="{{attention}}"
+                  />
+                  <button>
+                    <span>
+                      <a href="/inquiry">問い合わせページへ</a>
+                    </span>
+                 </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="send">
+                <form id = "myform"method="post" action="">
+                    <textarea onkeydown="handleTextareaEnter(event)" class="send_message" name="question" id="question"></textarea>
+                    <! <input type="text" class="send_message" name="question"> -->
+        <!-- <button class="send_btn" type="submit">送信</button>
+                </form>
+                
+                </form>
+            </div> -->
+      </div>
+    </div>
+
+    <script>
+      function handleTextareaEnter(event) {
+        if (event.keyCode === 13 && !event.shiftKey) {
+          event.preventDefault();
+          document.getElementById("myform").submit();
+        }
+      }
+
+      document
+        .getElementById("myform")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+        });
+
+      let target = document.getElementById("scroll");
+      target.scrollIntoView(false);
+
+      document.getElementById("question").focus();
+
+      let richMenu = document.querySelector(".rich_menu");
+      richMenu.scrollIntoView(false);
+    </script>
+  </body>
+</html>
